@@ -3,12 +3,20 @@ export interface Pokedex {
   name: string;
   height: number;
   weight: number;
+  abilities: [
+    {
+      ability: {
+        name: string;
+      };
+      slot: number;
+    }
+  ];
   types: [
     {
-      slot: 1,
+      slot: 1;
       type: {
-        name: string,
-      }
+        name: string;
+      };
     }
-    ],
+  ];
 }

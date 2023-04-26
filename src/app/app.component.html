@@ -1,12 +1,43 @@
-<div class="card container text-center mt-5" style="width: 25rem;">
-  <app-image [id] = "image"></app-image>
-  <div class="card-body">
-    <h5 class="card-title">{{pokemon.name | titlecase}}</h5>
-    <app-button (click) = "onclick('prev')" class="me-5"></app-button>
-    <app-button (click) = "onclick('prox')"></app-button>
+<div class="container d-flex flex-row justify-content-center">
+  <div class="card d-flex" style="width: 25rem">
+    <app-image [id]="image"></app-image>
+    <div class="card-body">
+      <h5 class="card-title">{{ pokemon.name | titlecase }}</h5>
+      <h6 class="card-text mb-4">
+        Types:
+        <span *ngFor="let type of pokemon.types">
+          - {{ type.type.name | titlecase }}
+        </span>
+      </h6>
+      <div class="d-flex justify-content-center mb-2">
+        <app-button (click)="onclick('prev')" class="me-5"></app-button>
+        <app-button (click)="onclick('prox')"></app-button>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="width: 20rem">
+    <div class="card-body">
+      <div class="card-title">
+        <h5 class="card-title ml-5">Basic info</h5>
+      </div>
+      <h6 class="card-text">Height: {{ pokemon.height }}</h6>
+      <h6 class="card-text">Weight: {{ pokemon.weight }}</h6>
 
-    <p>Height {{pokemon.height}}</p>
-    <p>Weight {{pokemon.weight}}</p>
-    Types: <span *ngFor="let type of pokemon.types">{{type.type.name | titlecase}} </span>
+      <h5 class="card-title mt-5">Abilities</h5>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Slot</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let currentAbilities of pokemon.abilities">
+            <th scope="row">{{ currentAbilities.slot }}</th>
+            <td>{{ currentAbilities.ability.name | titlecase }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
