@@ -1,17 +1,25 @@
-<div class="container d-flex flex-row justify-content-center">
+<div class="container d-flex flex-row justify-content-center mt-4">
   <div class="card d-flex" style="width: 25rem">
     <app-image [id]="image"></app-image>
     <div class="card-body">
-      <h5 class="card-title">{{ pokemon.name | titlecase }}</h5>
-      <h6 class="card-text mb-4">
+      <h4 class="card-title">{{ pokemon.name | titlecase }}</h4>
+      <h5 class="card-text mb-4">
         Types:
-        <span *ngFor="let type of pokemon.types">
-          - {{ type.type.name | titlecase }}
+        <span
+          [ngStyle]="{ background: getColor(type.type.name) }"
+          class="badge rounded-pill me-2"
+          *ngFor="let type of pokemon.types"
+        >
+          {{ type.type.name | titlecase }}
         </span>
-      </h6>
+      </h5>
       <div class="d-flex justify-content-center mb-2">
-        <app-button (click)="onclick('prev')" class="me-5"></app-button>
-        <app-button (click)="onclick('prox')"></app-button>
+        <app-button
+          (click)="onclick('prev')"
+          [hold]="'Prev'"
+          class="me-5"
+        ></app-button>
+        <app-button (click)="onclick('prox')" [hold]="'Next'"></app-button>
       </div>
     </div>
   </div>
