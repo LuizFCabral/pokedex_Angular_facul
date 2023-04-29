@@ -1,5 +1,16 @@
 <div class="container d-flex flex-row justify-content-center mt-4">
   <div class="card d-flex" style="width: 25rem">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Search by Pokemon id"
+        [(ngModel)]="id"
+        (keyup)="nextPokemon()"
+      />
+      <label for="floatingInput">Search by Pokemon id</label>
+    </div>
     <app-image [id]="image"></app-image>
     <div class="card-body">
       <h4 class="card-title">{{ pokemon.name | titlecase }}</h4>
